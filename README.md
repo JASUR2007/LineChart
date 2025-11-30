@@ -23,7 +23,7 @@ Demo:
 - Save the state after update: zoom, theme, aggregation, rate
 ## Installation
 ```bash
-git clone .git
-cd repositort_name
+git clone https://github.com/JASUR2007/LineChart.git
+cd LineChart
 npm install
 npm start
