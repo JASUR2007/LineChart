@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from "react";
+import { useRef } from "react";
 import {
     ResponsiveContainer,
     LineChart as ReLineChart,
@@ -8,7 +8,6 @@ import {
     Tooltip,
     CartesianGrid,
     Legend,
-    ReferenceLine,
     Brush,
     Area,
     AreaChart
@@ -16,7 +15,6 @@ import {
 import styles from "./../css/Chart.module.css";
 import { PreparedRow } from "../types";
 import { format } from "date-fns";
-import html2canvas from "html2canvas";
 
 type Props = {
     data: PreparedRow[];

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, useRef } from "react";
+import { useEffect, useMemo, useState } from "react";
 import dataJson from "./data/data.json";
 import { DataJson } from "./types";
 import { prepareDaily, aggregateByWeek, computeYDomain } from "./utils/dataHelpers";
@@ -15,7 +15,7 @@ const palette = [
     "#FF7AB6"
 ];
 
-function mapVariations(variations: any) {
+function mapVariations(variations: any[]) {
     return variations.map((v: any, i: number) => ({
         key: v.id ? String(v.id) : "0",
         name: v.name,
@@ -26,7 +26,7 @@ function mapVariations(variations: any) {
 function App() {
     const dj = dataJson as DataJson;
     const variations = useMemo(() => mapVariations(dj.variations), [dj.variations]);
-    const defaultSelected = variations.map((v) => v.key);
+    const defaultSelected = variations.map((v: any) => v.key);
 
     // Initialize state from localStorage
     const [granularity, setGranularity] = useState<"day" | "week">(() => {
@@ -95,7 +95,6 @@ function App() {
 
     const yDomain = useMemo(() => computeYDomain(rows, selectedKeys), [rows, selectedKeys]);
 
-    const exportRef = useRef<HTMLDivElement | null>(null);
     // export handler passed to Controls
     const handleExport = async () => {
         const el = document.getElementById("chart-root");
@@ -109,10 +108,7 @@ function App() {
         a.click();
     };
     const handleZoomChange = (delta: number) => {
-        setZoom(prev => {
-            const next = typeof delta === "function" ? delta(prev) : delta;
-            return Math.min(300, Math.max(10, next));
-        });
+        setZoom(prev => Math.min(300, Math.max(10, delta)));
     };
     const resetZoom = () => {
         setZoom(100);

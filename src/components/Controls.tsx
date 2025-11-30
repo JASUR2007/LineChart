@@ -1,4 +1,4 @@
-import React from "react";
+
 import styles from "./../css/Controls.module.css";
 import { Variation } from "../types";
 

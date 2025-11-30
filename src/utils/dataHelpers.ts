@@ -1,5 +1,5 @@
 import { DataJson, PreparedRow } from "../types";
-import { parseISO, startOfISOWeek, formatISO, format } from "date-fns";
+import { parseISO, startOfISOWeek, formatISO } from "date-fns";
 
 export function prepareDaily(dataJson: DataJson): PreparedRow[] {
     const rows: PreparedRow[] = dataJson.data.map((r) => {
