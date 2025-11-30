@@ -40,6 +40,27 @@ export default function Chart(props: Props) {
 
     const colors = new Map(variations.map((v) => [v.key, v.color]));
 
+    const getChartHeight = () => {
+        if (typeof window !== 'undefined') {
+            const width = window.innerWidth;
+            if (width < 480) return 300;
+            if (width < 768) return 350;
+            if (width < 1024) return 380;
+            return 420;
+        }
+        return 420;
+    };
+
+    const getChartMargin = () => {
+        if (typeof window !== 'undefined') {
+            const width = window.innerWidth;
+            if (width < 480) return { top: 15, right: 15, left: 0, bottom: 45 };
+            if (width < 768) return { top: 15, right: 15, left: 0, bottom: 50 };
+            return { top: 20, right: 20, left: 0, bottom: 60 };
+        }
+        return { top: 20, right: 20, left: 0, bottom: 60 };
+    };
+
     const CustomTooltip = ({ active, payload, label }: any) => {
         if (!active || !payload) return null;
         const row = data.find((r) => r.date === label);
@@ -64,12 +85,11 @@ export default function Chart(props: Props) {
         <div className={styles.chartWrap}
              ref={chartRef}
              id="chart-root"
-             style={{ transform: `
-             scale(${zoom / 100})`,
+             style={{ transform: `scale(${zoom / 100})`,
              transformOrigin: 'top left' }}>
-            <ResponsiveContainer width="100%" height={420}>
+            <ResponsiveContainer width="100%" height={getChartHeight()}>
                 {lineStyle === "area" ? (
-                    <AreaChart data={data} margin={{ top: 20, right: 20, left: 0, bottom: 60 }}>
+                    <AreaChart data={data} margin={getChartMargin()}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={formatDate} />
                         <YAxis domain={yDomain} tickFormatter={(v) => `${Number(v).toFixed(1)}%`} />
@@ -90,7 +110,7 @@ export default function Chart(props: Props) {
                         <Brush dataKey="date" height={30} stroke="#8884d8" />
                     </AreaChart>
                 ) : (
-                    <ReLineChart data={data} margin={{ top: 20, right: 20, left: 0, bottom: 60 }}>
+                    <ReLineChart data={data} margin={getChartMargin()}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date" tickFormatter={formatDate} />
                         <YAxis domain={yDomain} tickFormatter={(v) => `${Number(v).toFixed(1)}%`} />

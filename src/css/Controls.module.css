@@ -161,15 +161,21 @@
     opacity: 0;
     transform: scale(0.5);
     transition: all 0.3s ease;
-    stroke: white;
+    width: 12px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .checkboxChecked .checkIcon {
     opacity: 1;
     transform: scale(1);
 }
+
 .checkIcon path {
     stroke: white;
+    fill: none;
 }
 .checkboxLabel {
     font-size: 14px;
@@ -330,5 +336,221 @@
 
 .dark .zoomSlider {
     background: linear-gradient(to right, #3b82f6 0%, #3b82f6 var(--zoom), rgba(255,255,255,0.1) var(--zoom), rgba(255,255,255,0.1) 100%);
+}
+
+@media (max-width: 1024px) {
+    .controlsContainer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .controls {
+        padding: 18px;
+        gap: 18px;
+    }
+    
+    .blockLabel {
+        font-size: 11px;
+    }
+    
+    .checkbox {
+        padding: 8px 10px;
+        gap: 8px;
+    }
+    
+    .checkboxLabel {
+        font-size: 13px;
+    }
+    
+    .select {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+    
+    .segmentBtn {
+        padding: 6px 14px;
+        font-size: 13px;
+    }
+    
+    .btn {
+        padding: 8px 14px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .controlsContainer {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .controls {
+        padding: 16px;
+        gap: 16px;
+    }
+    
+    .header {
+        padding-bottom: 6px;
+    }
+    
+    .title {
+        font-size: 14px;
+    }
+    
+    .section {
+        gap: 10px;
+    }
+    
+    .blockLabel {
+        font-size: 10px;
+    }
+    
+    .checkbox {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+    
+    .checkboxCustom {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .select {
+        padding: 8px 12px;
+        font-size: 13px;
+        background-size: 10px 10px;
+        background-position: right 8px center;
+    }
+    
+    .segmentBtn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .footer {
+        gap: 8px;
+        flex-wrap: wrap;
+        padding-top: 10px;
+    }
+    
+    .btn {
+        padding: 8px 12px;
+        font-size: 12px;
+        flex: 1;
+        min-width: 120px;
+    }
+    
+    .zoomControl {
+        gap: 6px;
+    }
+    
+    .zoomValue {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .controlsContainer {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .controls {
+        padding: 12px;
+        gap: 12px;
+    }
+    
+    .header {
+        padding-bottom: 4px;
+    }
+    
+    .title {
+        font-size: 12px;
+    }
+    
+    .section {
+        gap: 8px;
+    }
+    
+    .blockLabel {
+        font-size: 9px;
+        letter-spacing: 0.5px;
+    }
+    
+    .variations {
+        gap: 6px;
+    }
+    
+    .checkbox {
+        padding: 6px 8px;
+        font-size: 12px;
+        gap: 6px;
+        border-radius: 8px;
+    }
+    
+    .checkboxCustom {
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+    }
+    
+    .checkIcon {
+        transform: scale(0.4);
+    }
+    
+    .checkboxChecked .checkIcon {
+        transform: scale(0.8);
+    }
+    
+    .segment {
+        border-radius: 10px;
+        padding: 3px;
+        gap: 3px;
+    }
+    
+    .segmentBtn {
+        padding: 5px 10px;
+        font-size: 11px;
+        border-radius: 6px;
+    }
+    
+    .select {
+        padding: 6px 10px;
+        font-size: 12px;
+        border-radius: 8px;
+        background-size: 10px 10px;
+        background-position: right 6px center;
+        padding-right: 28px;
+    }
+    
+    .footer {
+        gap: 6px;
+        flex-direction: column;
+        padding-top: 8px;
+    }
+    
+    .btn {
+        padding: 6px 10px;
+        font-size: 11px;
+        border-radius: 8px;
+        width: 100%;
+    }
+    
+    .zoomControl {
+        gap: 5px;
+    }
+    
+    .zoomSlider {
+        height: 5px;
+    }
+    
+    .zoomSlider::-webkit-slider-thumb {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .zoomValue {
+        font-size: 11px;
+    }
 }
 

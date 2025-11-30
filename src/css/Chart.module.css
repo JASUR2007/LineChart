@@ -4,3 +4,48 @@
 .tooltipRow { display:flex; justify-content:space-between; align-items:center; gap:10px; }
 .dot { width:10px; height:10px; border-radius:50%; display:inline-block; margin-right:8px; }
 .value { margin-left:12px; font-weight:700; }
+
+@media (max-width: 768px) {
+    .chartWrap {
+        padding: 8px;
+    }
+    .tooltip {
+        padding: 6px;
+        font-size: 12px;
+    }
+    .tooltipDate {
+        margin-bottom: 4px;
+    }
+    .tooltipRow {
+        gap: 6px;
+        font-size: 12px;
+    }
+    .dot {
+        width: 8px;
+        height: 8px;
+        margin-right: 6px;
+    }
+    .value {
+        margin-left: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chartWrap {
+        padding: 6px;
+    }
+    .tooltip {
+        padding: 4px;
+        font-size: 11px;
+    }
+    .tooltipRow {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .dot {
+        width: 6px;
+        height: 6px;
+        margin-right: 4px;
+    }
+}

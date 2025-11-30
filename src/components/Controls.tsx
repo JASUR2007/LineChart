@@ -1,6 +1,7 @@
 
 import styles from "./../css/Controls.module.css";
 import { Variation } from "../types";
+import { useState, useEffect } from "react";
 
 type Props = {
     variations: Variation[];
@@ -34,6 +35,19 @@ export default function Controls(props: Props) {
         onZoomChange,
         zoom
     } = props;
+    
+    const [isMobile, setIsMobile] = useState(false);
+    
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+    
     return (
         <div className={`${styles.controls} ${theme === "dark" ? styles.dark : ""}`}>
             <div className={styles.header}>
@@ -52,7 +66,7 @@ export default function Controls(props: Props) {
                                     <input type="checkbox" checked={checked} onChange={() => onToggle(key)} />
 
                                     <span className={styles.checkboxCustom}>
-                                        <svg className={styles.checkIcon} viewBox="0 0 12 10">
+                                        <svg className={styles.checkIcon} viewBox="0 0 12 10" fill="none">
                                             <path d="M1 5L4.5 8.5L11 1.5" stroke="currentColor"
                                                   strokeWidth="2" strokeLinecap="round"
                                                   strokeLinejoin="round" />
@@ -104,8 +118,8 @@ export default function Controls(props: Props) {
             </div>
 
             <div className={styles.footer}>
-                <button className={styles.btn} onClick={onResetZoom}>Reset Zoom</button>
-                <button className={`${styles.btn} ${styles.primary}`} onClick={onExport}>Export PNG</button>
+                <button className={styles.btn} onClick={onResetZoom}>{isMobile ? "Reset" : "Reset Zoom"}</button>
+                <button className={`${styles.btn} ${styles.primary}`} onClick={onExport}>{isMobile ? "Export" : "Export PNG"}</button>
             </div>
         </div>
     );
