@@ -1,0 +1,6 @@
+.chartWrap { background: var(--bg); padding:12px; border-radius:8px; }
+.tooltip { background: var(--tooltip-bg); color:var(--text); padding:8px; border-radius:6px; box-shadow:0 6px 16px rgba(0,0,0,0.2); }
+.tooltipDate { font-weight:600; margin-bottom:6px; }
+.tooltipRow { display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.dot { width:10px; height:10px; border-radius:50%; display:inline-block; margin-right:8px; }
+.value { margin-left:12px; font-weight:700; }
