@@ -20,7 +20,7 @@ Demo:
 - Line style selector: Line / Smooth / Area
 - Light / Dark theme
 - Export chart to PNG
-
+- Save the state after update: zoom, theme, aggregation, rate
 ## Installation
 ```bash
 git clone .git
