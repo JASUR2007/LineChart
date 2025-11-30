@@ -108,7 +108,7 @@ function App() {
         a.click();
     };
     const handleZoomChange = (delta: number) => {
-        setZoom(prev => Math.min(300, Math.max(10, delta)));
+        setZoom(() => Math.min(300, Math.max(10, delta)));
     };
     const resetZoom = () => {
         setZoom(100);
